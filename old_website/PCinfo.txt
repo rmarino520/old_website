@@ -1,0 +1,71 @@
+/* This is a very simple program I created using the Environment variable
+   This program is used to get very basic PC information.
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace Get_PC_Info
+{
+    class Program
+    {
+
+        //Get processor count
+        static string ProcessorCount()
+        {
+            if (Environment.ProcessorCount == 1)
+            {
+                return "Single core";
+            }else if(Environment.ProcessorCount == 2)
+            {
+                return "Dual Core";
+            }else if (Environment.ProcessorCount == 3)
+            {
+                return "Tri core";
+            }
+            else if(Environment.ProcessorCount == 4)
+            {
+                return "Quad Core";
+            }else if(Environment.ProcessorCount == 6)
+            {
+                return "Hex-Core";
+            }else if(Environment.ProcessorCount == 8)
+            {
+                return "Octa-Core";
+            }
+            return "Processor Count Error";
+        }
+        
+        static void Main(string[] args)
+        {
+            //Print OS version
+            Console.WriteLine(Environment.OSVersion);
+            
+            //Print OS Bit size
+            if (Environment.Is64BitOperatingSystem)
+            {
+                Console.WriteLine("64 Bit");
+            }
+            else
+            {
+                Console.WriteLine("32 Bit");
+            }
+
+            //Print Processor Count
+            Console.WriteLine("Processor: " + ProcessorCount());
+
+            //Print PC name
+            Console.WriteLine("PC Name: " + Environment.MachineName);
+
+            //Print PC User Name 
+            Console.WriteLine("User Name: " + Environment.UserName);
+
+            //Wait for Key press
+            Console.ReadKey();
+        }
+    }
+}

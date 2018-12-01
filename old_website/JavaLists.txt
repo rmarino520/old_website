@@ -1,0 +1,81 @@
+/* This is a modification of a group final project I had participated in 
+   for my Data Structures and Algorithms class. We used a much larger data 
+   set to get a more noticable time difference in between the 3 structures. 
+   
+   The three structures I have compared are the Arraylist, the Linkedlist
+   and the hash set. I developed all 3 structures from a single int array.
+   Once they are created then I pass them into methods that calculate the 
+   time to find a number in nano seconds. 
+*/
+
+
+package list.structures;
+import java.util.*;
+
+public class ListStructures {
+    
+    public static void main(String[] args) {
+        
+        int[] arrayToChange = {11, 65, 5, 32, 5, 9, 95, 64, 72, 11,
+                                   63, 5, 78, 4, 12, 6, 98, 1, 54, 10,
+                                   99, 61, 13, 5, 35};
+        //Sort array.
+        Arrays.sort(arrayToChange);
+        
+        //Create Linked list.
+        List<Integer> list_L = new LinkedList<>(); 
+        for(int i = 0; i < arrayToChange.length; i++){
+            list_L.add(arrayToChange[i]);
+        }
+        System.out.println(list_L);
+        
+        //Create Array list.
+        List<Integer> list_A = new ArrayList<>();
+        for(int i = 0; i < arrayToChange.length; i++){
+            list_A.add(arrayToChange[i]);
+        }
+        System.out.println(list_A);
+
+        //Create hash set from linked list.
+        Set<Integer> set_H = new HashSet<>(list_L);
+        System.out.println(set_H);
+        
+        //Put hash set into an aray list to order it. 
+        List sorted_H = new ArrayList(set_H);
+        Collections.sort(sorted_H);
+        System.out.println(sorted_H);
+        
+        //Declare a number to search for.
+        int numFind = 5;
+        findInArrayList(list_A, numFind);
+        findInLinkedList(list_L, numFind);
+        findInHashSet(set_H, numFind);
+    }       
+    
+//Calculate Arraylist time.    
+public static void findInArrayList(List<Integer> A_list, int findNum){
+        long startTime = System.nanoTime();
+        A_list.contains(findNum);
+        long endTime = System.nanoTime();
+        long totalTime = (endTime - startTime);
+        System.out.println("It took " + totalTime + " ns to find the number in the Arraylist"); 
+    }
+
+//Calculate Linkedlist time.
+public static void findInLinkedList(List<Integer> L_list, int findNum){
+        long startTime = System.nanoTime();
+        L_list.contains(findNum);
+        long endTime = System.nanoTime();
+        long totalTime = (endTime - startTime);
+        System.out.println("It took " + totalTime + " ns to find the number in the Linkedlist"); 
+    }
+
+//Calculate hash set time.
+public static void findInHashSet(Set<Integer> H_set, int findNum){
+        long startTime = System.nanoTime();
+        H_set.contains(findNum);
+        long endTime = System.nanoTime();
+        long totalTime = (endTime - startTime);
+        System.out.println("It took " + totalTime + " ns to find the number in the Hash set");
+    }
+}

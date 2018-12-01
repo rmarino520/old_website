@@ -1,0 +1,59 @@
+/* The purpose of this program is to explore file manipulation using C#.
+   The program gets the computers path to the desktop and creates a .txt file
+   named WriteTo.txt. The maximum size is decided in bytes. This size can be changed
+   in the future depending on the requirements of the user. 
+   
+   Once a maximum size is set, the program then writes random numbers to the file.
+   This fills up the file 2 bytes at a time until the maximum size is reached. 
+   While the progtam is writing to the file a display comes up to show how many bytes 
+   have been written. Random numbers are used in this case but the program can be modified 
+   in the future to accomidate whatever the user needs to write to the file. 
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+namespace Write_To_Txt
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Get Desktop Path
+            string DesktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            //Append txt file to the end of Desktop path
+            string TxtLocation = (DesktopPath + @"\WriteTo.txt");
+
+            TextWriter FileWrite = new StreamWriter(TxtLocation, true);
+
+            //Set Max Size (in bytes)
+            long MaxSize = 1048576;
+
+            for (int i = 0; ; i++)
+            {
+                //Get current size of file
+                long CurrentSize = new System.IO.FileInfo(TxtLocation).Length;
+
+                //Generate Random numbers into the txt file until max size is reached
+                Random rnd = new Random();
+                int Numbers = rnd.Next(1, 9);
+                FileWrite.Write(Numbers + " ");
+
+                Console.Write("\r{0}" + "/" + MaxSize + " Bytes Written", CurrentSize);
+
+                if (CurrentSize >= MaxSize)
+                {
+                    Console.WriteLine("\nFile Write Conplete");
+                    Console.ReadKey();
+                    break;
+                }
+            }
+        }
+
+    }
+}

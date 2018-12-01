@@ -1,0 +1,70 @@
+/* I was asked recently about questions pertaining to C programming. I was unable to answer them 
+with my current understanding of C so it drove me to dig a little deeper into these concepts of the language. 
+The main question pertained to dereferencing double pointers. In this code I will be exploring single, 
+double and triple pointers. */
+
+#include "stdafx.h"
+#include <cstdio>
+#include <cstdlib>
+
+int main()
+{ 
+	//This first section of the code deals with pointers. The original value is set to 1.
+	int num = 1;
+	
+	//Setting single, double and triple pointers.
+	int *pNum = &num;
+	int **ppNum = &pNum;
+	int ***pppNum = &ppNum;
+
+	//Prints out the memory address of the pointers.
+	printf("Memory Address: \nTriple Pointer: %p \nDouble Pointer: %p \nPointer: %p\n\n", &pppNum, &ppNum, &pNum);
+
+	//Prints out the values that each pointer points to by dereferencing the values.
+	printf("Dereferenced Value: \nTriple Pointer: %d \nDouble Pointer: %d \nPointer: %d\n\n", ***pppNum, **ppNum, *pNum);
+
+	//Dereference the double pointer and set the value to 2
+	**ppNum = 2;
+
+	/*By setting the double pointer to 2, the original value of Num is changed. The dereferenced values 
+	are printed out to show the value change. Since each pointer points to eachother, the triple pointer will print out
+	the new value because the main value has changed. */
+	printf("The value of the double pointer: %d \n"
+		   "This changes original value of num: %d \n"
+		   "The triple pointer points to the new value: %d \n\n", **ppNum, num, ***pppNum);
+
+	//Arrays are like pointers in that you can view the memory address without declaring a new pointer
+	int numArr[5] = { 0, 12, 3, 44, 5 };
+	int numReverse[5];
+	int i;
+	int j;
+
+	//Prints the Position in the array, memory address and value
+	for ( i = 0; i < 5; i++) {
+		if (i == 0) {
+			printf("Position in Array \t Memory Address \t Value\n");
+		}
+		printf("\t%d \t\t %p \t\t %d \n", i, &numArr[i], numArr[i]);
+	}
+
+	//Sets numReverse equal to the reverse of numArr
+	for ( i = 0, j = 4; i < 5; i++, j--) {
+		numReverse[j] = numArr[i];
+	}
+
+	//Print original array
+	printf("\nOriginal Array: \n");
+	for (i = 0; i < 5; i++) {
+		printf("%d ", numArr[i]);
+	}
+
+	//Print new reversed array
+	printf("\nReversed Array: \n");
+	for (i = 0; i < 5; i++) {
+		printf("%d ", numReverse[i]);
+	}
+	
+	getchar();
+
+    return 0;
+}

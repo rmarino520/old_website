@@ -1,0 +1,64 @@
+h1{
+	margin:75px;
+	text-align: center;
+	color:red;
+	border-bottom:1px solid black;
+}
+
+#PrgmIMG{ 
+	float:left;
+	margin:75px;
+}
+
+iframe{
+	height:400px;
+	width:800px;	
+}
+
+h2{
+	margin-left:75px;
+	text-decoration: underline;
+}
+
+#OutputMargin{
+	margin-left:75px;
+}
+
+#next{
+	float:right; 
+	display:block; 
+	background-color:lightblue; 
+	padding:30px;  
+	color:black; 
+	border:1px solid black;
+	margin-bottom:40px;
+	margin-right:75px;
+}
+
+#prev{
+	float:left; 
+	display:block; 
+	background-color:lightblue; 
+	padding:30px;  
+	color:black; 
+	border:1px solid black;
+	margin-bottom:40px;
+	margin-left:75px;
+}
+
+#MultiButton{
+	float:left;
+	display:block; 
+	background-color:lightblue; 
+	padding:5px;  
+	color:black; 
+	border:1px solid black;
+	margin-bottom:40px;
+	margin-right:75px;
+}
+
+#MultiButton:nth-last-child(-n+1){
+	
+	margin-right:700px;
+}
+

@@ -1,0 +1,56 @@
+/*Structures are something I use quite often. I noticed that I never made anything containing structures
+for my website. In this program I will create a structure that contains information about 
+a (very small) high school class. After I create each instance of the structure, I will then create 
+an array of those structures. This allows me to print the data to the screen using a for loop.
+If statements were added to the print loop because the formatting was off depending on the name 
+length. I also added a 6th student that is not included in the array to show a different way of 
+creating an instance of a structure.*/
+
+#include "stdafx.h"
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+
+struct classInfo {
+
+	char firstName[15];
+	char lastName[15];
+	char grade;
+};
+
+int main()
+{
+	//Create each instance of classInfo 
+	struct classInfo student1 = { "Jerry", "Howard", 'A'};
+	struct classInfo student2 = { "Ron", "Swanson", 'C' };
+	struct classInfo student3 = { "Rachel", "Green", 'A' };
+	struct classInfo student4 = { "Becky", "Verding", 'D' };
+	struct classInfo student5 = { "Stanley", "Redding", 'B' };
+	
+	//Showing a different way of creating an instance of the structure
+	struct classInfo student6;
+	strcpy(student6.firstName, "Fran");
+	strcpy(student6.lastName, "Chase");
+	student6.grade = 'A';
+
+	//Place the structures into an array
+	struct classInfo studentArr[5] = { student1, student2, student3, student4, student5 };
+
+	//Print the structure info with proper formatting
+	for (int i = 0; i < 5; i++) {
+		if (i == 0) {
+			printf("First Name \t Last Name\t Grade \n");
+		}
+		if (i == 2) {
+			printf("%s \t\t %s \t\t %c\n", studentArr[i].firstName, studentArr[i].lastName, studentArr[i].grade);
+		}
+		else if (i == 4) {
+			printf("%s \t %s \t %c\n", studentArr[i].firstName, studentArr[i].lastName, studentArr[i].grade);
+		}else
+		printf("%s \t\t %s \t %c\n", studentArr[i].firstName, studentArr[i].lastName, studentArr[i].grade);
+	}
+	printf("%s \t\t %s \t\t %c\n", student6.firstName, student6.lastName, student6.grade); 
+	getchar();
+
+    return 0;
+}

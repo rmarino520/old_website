@@ -1,0 +1,18 @@
+h1{
+	
+	margin:75px;
+	text-align: center;
+	color:red;
+	border-bottom:1px solid black;
+}
+
+pre{
+	
+	margin:75px;
+	font-family:Arial, Helvetica, serif;
+}
+
+p{
+	font-family:Arial, Helvetica, serif;
+	text-align:center;
+}

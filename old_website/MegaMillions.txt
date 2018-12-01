@@ -1,0 +1,55 @@
+/*This program generates 2 random arrays of numbers based on the mega millions criteria.
+  The first array, the winning numbers, is static.
+  The Picked numbers are randomly generated each time the Picked numbers are != to the Winning numbers. 
+  The counter is increased and shows how many times the Picked numbers are generated.
+
+  This file has the ability to run for days with no solution due to the massive amount of possibilities. 
+  A display keeps track of how many tries it has taken. 
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+namespace Mega_Millions
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int ctr = 0;
+            Random rand = new Random();
+
+            //Static int array
+            int[] WinningNumbers = new int[] { rand.Next(1, 75), rand.Next(1, 75), rand.Next(1, 75), rand.Next(1, 75), rand.Next(1, 75), rand.Next(1, 15) };
+            
+
+            for (int i = 0; ; i++)
+            {
+                //Variable int array
+                int[] PickedNumbers = new int[] { rand.Next(1, 75), rand.Next(1, 75), rand.Next(1, 75), rand.Next(1, 75), rand.Next(1, 75), rand.Next(1, 15) };
+               
+
+                //Compare both array contents
+                bool Equal = (Enumerable.SequenceEqual(WinningNumbers, PickedNumbers));
+                ctr++;
+           
+
+                if (Equal == true)
+                {
+                    Console.WriteLine("\nWinner! Winner! Winner! Tries = " + ctr);
+                    Console.ReadKey();
+                    break;
+                }
+                else
+                {
+                    Console.Write("\r{0} tries.", (ctr+1));
+                }
+            }
+        }
+    }
+}

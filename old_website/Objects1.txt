@@ -1,0 +1,77 @@
+/*
+  This program shows the three main concepts of object oriented programming which are Polymorphism, Inheritance 
+  and Encapsulation. In this program, I created a small user scenario which determines the outcome of the object.
+  The class BossAttr contains 2 attributes that every boss in my scenario will have. (Encapsulation) The BossStats class 
+  inherits all public properties that are conained within BossAttr. Once the user picks a number, a finalBoss object is created 
+  with the BossStats variables being defined based upon what number the user picks. (Polymorphism) But each finalBoss object
+  that is created will automatically inherit all properties from the BossAttr class. (Inheritence)
+  */
+
+#include "stdafx.h"
+#include <stdlib.h>
+#include <iostream>
+
+using namespace std;
+
+//Inherited class containing attributes which every boss will have
+class BossAttr {
+
+public: char *teeth = "sharp fangs";
+		char *tongue = "forked tongue";
+};
+
+//BossStats class inherits BossAttr and sets stats based on user input
+class BossStats: public BossAttr{
+
+public: int health;
+	    int defense;
+		int attack;
+		char *appearance;
+
+		void setStats(int setHealth, int setDefense, int setAttack, char *setAppearance) {
+			health = setHealth;
+			defense = setDefense;
+			attack = setAttack;
+			appearance = setAppearance;
+		}
+};
+
+int main()
+{
+	int decision;
+
+	cout << "You have traveled a long way until now and faced many trials along the way.\n"
+	     << "You must make one last choice before you face the final boss.\n" 
+		 << "This choice will determine the strength of the final boss.\n"
+		 << "Will you decide to take the first, second, or third statue?\n"
+		 << "(press 1, 2, or 3)\n";
+	cin >> decision;
+
+	//The user decision determines the finalBoss object.
+	if (decision == 1) {
+		BossStats finalBoss;
+		finalBoss.setStats(150, 200, 120, "ogre");
+		cout << "\nYour final boss is a " << finalBoss.appearance << " with " << finalBoss.teeth << " and a " << finalBoss.tongue << ".\n"
+			<< "The boss's stats are:\nHealth: " << finalBoss.health << "\nAttack: " << finalBoss.attack << "\nDefense: " << finalBoss.defense;
+		getchar();
+	}
+	else if (decision == 2) {
+		BossStats finalBoss;
+		finalBoss.setStats(1000, 5200, 1200, "giant armored dragon");
+		cout << "\nYour final boss is a " << finalBoss.appearance << " with " << finalBoss.teeth << " and a " << finalBoss.tongue << ".\n"
+			<< "The boss's stats are:\nHealth: " << finalBoss.health << "\nAttack: " << finalBoss.attack << "\nDefense: " << finalBoss.defense;
+		getchar();
+	}
+	else {
+		BossStats finalBoss;
+		finalBoss.setStats(1, 1, 1, "tiny Kitten");
+		cout << "\nYour final boss is a " << finalBoss.appearance << " with " << finalBoss.teeth << " and a " << finalBoss.tongue << ".\n"
+			<< "The boss's stats are:\nHealth: " << finalBoss.health << "\nAttack: " << finalBoss.attack << "\nDefense: " << finalBoss.defense;
+		getchar();
+	}
+	getchar();
+
+
+    return 0;
+}
+

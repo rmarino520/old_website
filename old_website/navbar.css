@@ -1,0 +1,44 @@
+/*		<!--Nav Bar-->
+		<ul>
+			<li>Page 1</li> <!-- About Me -->
+			<li>Page 2</li> <!--Resume-->
+			<li>Page 3</li> <!--C++ Code-->
+			<li>Page 4</li> <!--C# Code-->
+			<li>Page 5</li> <!--Java Code-->
+			<li>Page 6</li> <!--Updated--> 
+		</ul>  
+*/	
+
+/*Entire List*/
+ul{	
+	margin:0;
+	padding:0;
+	border:3px double black;
+	text-align:center;
+	list-style-type:none;
+	position:fixed; 
+	background-color:lightblue;
+	width:99%;
+	top:0;
+}
+
+li{
+	float:left;
+	color:white; 
+	border-right:1px solid black;
+}
+
+/*Each link*/
+li a{
+	
+	text-align:center;
+	display:block;
+	text-decoration: none;
+	padding:8px;
+}
+
+li a:hover{
+	background-color:white;
+	color:red;
+}
+

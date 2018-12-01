@@ -1,0 +1,27 @@
+h1{
+	text-align: center;
+	padding:0px 30px 0px;
+}
+
+#pic a{ 
+	display: flex; 
+	justify-content: center;
+	margin-top: 50px;
+	opacity: 0.5;
+	border:3px solid #000000;
+	position:realitive;
+	}
+
+#pic a:hover{
+	opacity:1;
+}
+
+#text h1{
+	top:316px;
+	left:100px;
+	position:absolute;
+	text-align:center;
+	color:#FF0000;
+	font-weight:bold;
+}
+

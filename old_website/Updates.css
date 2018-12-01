@@ -1,0 +1,15 @@
+h1{
+	
+	margin:75px;
+	text-align: center;
+	color:red;
+	border-bottom:1px solid black;
+}
+h3{
+	text-decoration: underline;
+	
+}
+p{
+	font-family:Arial, Helvetica, serif;
+	text-align:left;
+}
